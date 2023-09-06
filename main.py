@@ -42,27 +42,48 @@ def check_winner():
             return True
 
     for column in range(3):
-        if buttons[0][column]['text'] == buttons[1][column]['text'] == buttons[2][column] !="":
+        if buttons[0][column]['text'] == buttons[1][column]['text'] == buttons[2][column]['text'] != "":
             return True
 
-        if buttons [0][0]['text'] == buttons[1][1]['text'] == buttons[2][2]['text'] != "":
-            return True
+    if buttons [0][0]['text'] == buttons[1][1]['text'] == buttons[2][2]['text'] != "":
+        return True
         
-        elif buttons [0][2]['text'] == buttons[1][1]['text'] == buttons[2][0]!= "":
-            return True  
+    elif buttons [0][2]['text'] == buttons[1][1]['text'] == buttons[2][0]['text'] != "":
+        return True  
         
-        elif empty_spaces() is False:
-            return "Tie!"
+    elif empty_spaces() is False:
 
-        else:
-            return False
+        for row in range(3):
+            for column in range(3):
+                buttons[row][column].config
+            return "Tie"
+
+    else:
+        return False
              
 
 def empty_spaces():
-    pass
+    spaces = 9
+
+    for row in range(3):
+        for column in range(3):
+            if buttons[row][column]['text'] != "":
+                spaces -=1
+    
+    if spaces == 0:
+        return False
+    else:
+        return True
 
 def new_game():
-    pass
+    global player
+
+    player = random.choice(players)
+    label.config(text=player+" turn")
+
+    for row in range(3):
+        for column in range(3):
+            buttons[row][column].config(text="")
 
 #window for game
 window= Tk()
